@@ -23,7 +23,7 @@ async function iterate(cnpjObj) {
     let éEmailDeContabilidade = /contabil|consul/gi.test(stringEmail);
 
     if (éEmailDeContabilidade) {
-        console.log('Merda de contabilidade... Pulando.');
+        console.log('Contato de contabilidade... Pulando.');
     }
 
     if (!arrayCelulares || éEmailDeContabilidade) return;
