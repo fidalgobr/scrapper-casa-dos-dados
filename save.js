@@ -1,4 +1,4 @@
-const { writeFileSync, readFileSync } = require('fs');
+const { writeFileSync, readFileSync, existsSync } = require('fs');
 const path = require('path');
 
 function save(novaInfo, telefone) {
@@ -6,7 +6,9 @@ function save(novaInfo, telefone) {
 
     const caminhoPlanilha = path.join(__dirname, 'planilha.csv');
 
-    let planilhaAntiga = readFileSync(caminhoPlanilha, { encoding: 'utf8' });
+    let planilhaJaExiste = existsSync(caminhoPlanilha);
+
+    let planilhaAntiga = planilhaJaExiste ? readFileSync(caminhoPlanilha, { encoding: 'utf8' }) : 'email, phone';
 
     let planilhaNova = planilhaAntiga + `\n${novaInfo.email},${novaInfo.telefone}`;
 

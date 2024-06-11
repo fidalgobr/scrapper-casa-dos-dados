@@ -8,9 +8,7 @@ async function request(page) {
 
     data.page = page;
 
-    return await axios.post('https://api.casadosdados.com.br/v2/public/cnpj/search', data, {
-        headers
-    });
+    return await axios.post('https://api.casadosdados.com.br/v2/public/cnpj/search', data);
 }
 
 async function main() {
@@ -24,7 +22,21 @@ async function main() {
         if (!listaCnpj) break;
 
         for (let cnpj of listaCnpj) {
-            await iterate(cnpj);
+            let numErros = 0;
+
+            try {
+                await iterate(cnpj);
+            } catch (e) {
+                console.error(e);
+                while (numErros < 2) {
+                    try {
+                        await iterate(cnpj);
+                        break;
+                    } catch (e) {
+                        numErros++;
+                    }
+                }
+            }
         }
     }
 }
