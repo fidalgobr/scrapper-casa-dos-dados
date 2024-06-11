@@ -1,5 +1,6 @@
 planilha.csv
 *.txt
+.~lock*
 
 # Logs
 logs

@@ -12,7 +12,8 @@ async function request(page) {
 }
 
 async function main() {
-    for (let i = 1; true; i++) {
+    //50 é o limite
+    for (let i = 1; i <= 50; i++) {
         console.log(`Iterando página ${i}\n`);
 
         let req = await request(i);
