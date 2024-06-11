@@ -1,6 +1,7 @@
 const axios = require('axios');
 
 module.exports = axios.create({
+    //alguns desses headers podem não serem aceitos pelo navegador, se você rodar isso aqui como um userscript ou extensão
     baseURL: 'https://api.casadosdados.com.br/v2/public/cnpj/',
     headers: {
         'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0',
