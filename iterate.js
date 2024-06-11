@@ -28,7 +28,14 @@ async function iterate(cnpjObj) {
 
     if (!arrayCelulares || éEmailDeContabilidade) return;
 
-    let telefone = '+55' + arrayCelulares[0].trim().replace(' ', '');;
+    let telefonePreProcessado = arrayCelulares[0];
+
+    if (telefonePreProcessado.length < 6) {
+        //mude o DDD pro da sua região
+        telefonePreProcessado = '35' + telefonePreProcessado;
+    }
+
+    let telefone = '+55' + telefonePreProcessado.trim().replace(' ', '');;
     let email = stringEmail.trim();
 
     let novaInfo = {
